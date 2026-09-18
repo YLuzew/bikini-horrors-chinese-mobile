@@ -1,241 +1,256 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <language>
-	<str id="optionsMenu.desc-missing">No Description</str>
+	<str id="optionsMenu.desc-missing">无 描述</str>
 
 	<group name="OptionsMenu">
-		<str id="optionsMenu.advanced">Advanced</str>
-		<str id="optionsMenu.header.title">Options Menu</str>
-		<str id="optionsMenu.header.desc">Select a category to continue.</str>
+		<str id="optionsMenu.advanced">高级设置</str>
+		<str id="optionsMenu.header.title">设置 菜单</str>
+		<str id="optionsMenu.header.desc">选择一个分类以继续。</str>
 
-		<str id="optionsTree.controls-name">Controls</str>
-		<str id="optionsTree.controls-desc">Change Controls for Player 1 and Player 2!</str>
+		<str id="optionsTree.controls-name">键位</str>
+		<str id="optionsTree.controls-desc">更改玩家1和玩家2的键位设置！</str>
 
-		<str id="optionsTree.gameplay-name">Gameplay</str>
-		<str id="optionsTree.gameplay-desc">Change Gameplay options such as Downscroll, Scroll Speed, Naughtyness...</str>
-		<str id="optionsTree.gameplay.advanced-desc">Change more advanced options such as Streaming Audio...</str>
+		<str id="optionsTree.gameplay-name">游戏玩法</str>
+		<str id="optionsTree.gameplay-desc">更改游戏玩法选项，例如反向滚动、滚动速度、不雅内容 等…</str>
+		<str id="optionsTree.gameplay.advanced-desc">更改更多高级选项，例如流式音频（Streaming Audio）…</str>
 
-		<str id="optionsTree.appearance-name">Appearance</str>
-		<str id="optionsTree.appearance-desc">Change Appearance options such as Flashing menus...</str>
-		<str id="optionsTree.appearance.advanced-desc">Change more advanced options such as VRAM-Only Sprites, Antialiasing, Shaders</str>
+		<str id="optionsTree.appearance-name">外观</str>
+		<str id="optionsTree.appearance-desc">更改外观选项，例如闪烁菜单 等…</str>
+		<str id="optionsTree.appearance.advanced-desc">更改更多高级选项，例如仅显存精灵、抗锯齿、着色器 等。</str>
 
-		<str id="optionsTree.language-name">Language</str>
-		<str id="optionsTree.language-desc">Change the language that the engine uses.</str>
+		<str id="optionsTree.language-name">语言</str>
+		<str id="optionsTree.language-desc">更改引擎所使用的语言。</str>
 
-		<str id="optionsTree.miscellaneous-name">Miscellaneous</str>
-		<str id="optionsTree.miscellaneous-desc">Use this menu to reset save data or engine settings.</str>
+		<str id="optionsTree.miscellaneous-name">杂项</str>
+		<str id="optionsTree.miscellaneous-desc">使用此菜单重置存档数据或引擎设置。</str>
 
-		<str id="optionsTree.debug-name">Debug Options</str>
-		<str id="optionsTree.debug-desc">Debug Options for Developer Mode.</str>
+		<str id="optionsTree.debug-name">调试项</str>
+		<str id="optionsTree.debug-desc">开发者模式的调试选项</str>
 
-		<str id="optionsTree.mobile-name">Mobile Options</str>
-		<str id="optionsTree.mobile-desc">Change Options related to Mobile Controls.</str>
+		<str id="optionsTree.mobile-name">移动端设置</str>
+		<str id="optionsTree.mobile-desc">更改与移动设备或触控控制相关的选项。</str>
 	</group>
 
 	<group name="KeybindOptions" prefix="KeybindsOptions.">
-		<str id="left">Left</str>
-		<str id="down">Down</str>
-		<str id="up">Up</str>
-		<str id="right">Right</str>
+		<str id="left">左键</str>
+		<str id="down">下键</str>
+		<str id="up">上键</str>
+		<str id="right">右键</str>
 
-		<str id="category.notes">Notes</str>
+		<str id="category.notes">音符</str>
 
-		<str id="category.ui">UI</str>
+		<str id="category.ui">UI界面</str>
 		<group name="ui" prefix="ui.">
-			<str id="accept">Accept</str>
-			<str id="back">Back</str>
-			<str id="reset">Reset</str>
-			<str id="pause">Pause</str>
-			<str id="changeMode">Change Mode</str>
+			<str id="accept">确认键</str>
+			<str id="back">返回键</str>
+			<str id="reset">重开键</str>
+			<str id="pause">暂停键</str>
+			<str id="changeMode">修改模式</str>
 		</group>
 
-		<str id="category.engine">Engine</str>
+		<str id="category.engine">引擎</str>
 		<group name="engine" prefix="engine.">
-			<str id="switchMod">Switch Mod</str>
-			<str id="fpsCounter">FPS Counter</str>
+			<str id="switchMod">切换模组</str>
+			<str id="fpsCounter">帧率显示</str>
 		</group>
 
-		<str id="category.volume">Volume</str>
-		<str id="volume.up">Up</str>
-		<str id="volume.down">Down</str>
-		<str id="volume.mute">Mute</str>
+		<str id="category.volume">游戏音量</str>
+		<str id="volume.up">增加</str>
+		<str id="volume.down">降低</str>
+		<str id="volume.mute">静音</str>
 
-		<str id="category.developer">Developer</str>
+		<str id="category.developer">开发者</str>
 		<group name="developer" prefix="developer.">
-			<str id="devMenus">Developer Menus</str>
-			<str id="openConsole">Open Console</str>
-			<str id="reloadState">Reload State</str>
+			<str id="devMenus">开发者菜单</str>
+			<str id="openConsole">打开控制台</str>
+			<str id="reloadState">重新加载</str>
 		</group>
 	</group>
 
 	<group name="AppearanceOptions" prefix="AppearanceOptions.">
-		<str id="framerate-name">Framerate</str>
-		<str id="framerate-desc">Pretty self explanatory, isn't it?</str>
+		<str id="framerate-name">最大帧数</str>
+		<str id="framerate-desc">这很容易理解，不是吗？</str>
 
-		<str id="flashingMenu-name">Flashing Menu</str>
-		<str id="flashingMenu-desc">If unchecked, will disable menu flashing when you select an option in the Main Menu, and other flashes will be slower.</str>
+		<str id="flashingMenu-name">主菜单闪光</str>
+		<str id="flashingMenu-desc">若未勾选此项，将禁用主菜单中选择选项时的菜单闪烁效果，且其他闪烁效果会变慢。</str>
 
-		<str id="colorHealthBar-name">Colored Healthbar</str>
-		<str id="colorHealthBar-desc">If unchecked, the game will use the original red/green health bar from the week 6 fnf game.</str>
+		<str id="colorHealthBar-name">血条颜色</str>
+		<str id="colorHealthBar-desc">若未勾选此项，游戏将使用来自FNF第六周内容的原版 红/绿 色生命值条。</str>
 
-		<str id="week6PixelPerfect-name">Pixel Perfect Effect</str>
-		<str id="week6PixelPerfect-desc">If checked, Week 6 or other pixel stages will have a pixel perfect effect to it enabled, aligning every pixel on the screen.</str>
+		<str id="week6PixelPerfect-name">完美像素</str>
+		<str id="week6PixelPerfect-desc">若勾选此项，第六周或其他像素风格关卡将启用像素完美效果，使屏幕上的每个像素都精准对齐。</str>
 
 		<group name="AppearanceOptionsAdvanced" prefix="Advanced.">
-			<str id="quality-name">Quality</str>
-			<str id="quality-desc">Quality modes to choose. "LOW" disables heavy visual effects, "MEDIUM" keeps important effects with mobile-friendly shader settings, "HIGH" enables full visual effects, "CUSTOM" allows the advanced toggles below.</str>
-			<str id="quality-low">LOW</str>
-			<str id="quality-medium">MEDIUM</str>
-			<str id="quality-high">HIGH</str>
-			<str id="quality-custom">CUSTOM</str>
+			<str id="quality-name">画质</str>
+			<str id="quality-desc">可选择的画质模式：\n“低画质”= 禁用所有占用资源较多的视觉效果，以尽可能让游戏运行更流畅\n“高画质”= 启用所有视觉效果，但会牺牲性能\n“自定义”= 允许使用“高级设置”中提供的自定义选项。</str>
+			<str id="quality-low">低画质</str>
+			<str id="quality-high">高画质</str>
+			<str id="quality-custom">自定义</str>
 
-			<str id="antialiasing-name">Antialiasing</str>
-			<str id="antialiasing-desc">If unchecked, will disable antialiasing on every sprite. Can boost performances at the cost of sharper, more pixely sprites.</str>
+			<str id="antialiasing-name">抗锯齿</str>
+			<str id="antialiasing-desc">若未勾选此项，将禁用所有精灵的抗锯齿。此举可提升性能，但会导致精灵图像边缘更锐利、像素感更强。</str>
 
-			<str id="lowMemoryMode-name">Low Memory Mode</str>
-			<str id="lowMemoryMode-desc">If checked, will disable certain background elements in stages to reduce memory usage.</str>
+			<str id="lowMemoryMode-name">低占用模式</str>
+			<str id="lowMemoryMode-desc">若勾选此项，将禁用部分曲目中的背景元素，以减少内存占用。</str>
 
-			<str id="gameplayShaders-name">Gameplay Shaders</str>
-			<str id="gameplayShaders-desc">If unchecked, gameplay shaders (visual effects like Thorns's Chromatic Aberration) wont be loaded; this may be helpful on weak devices.</str>
+			<str id="gameplayShaders-name">游戏着色器</str>
+			<str id="gameplayShaders-desc">若未勾选此项，游戏着色器（如Thorns的色差效果等视觉效果）将不会加载；这对性能较弱的设备可能有所帮助。</str>
 
-			<str id="gpuOnlyBitmaps-name">VRAM-Only Sprites</str>
-			<str id="gpuOnlyBitmaps-desc">If checked, will only store the bitmaps in the GPU, freeing a LOT of memory (EXPERIMENTAL). Turning this off will consume a lot of memory, especially on bigger sprites. If you aren't sure, leave this on.</str>
+			<str id="gpuOnlyBitmaps-name">显存精灵图</str>
+			<str id="gpuOnlyBitmaps-desc">若勾选此项，将仅在图形处理器（GPU）中存储位图，释放大量内存（实验性功能）。关闭此选项会消耗大量内存，尤其是在处理较大精灵图像时。若不确定如何操作，建议保持开启。</str>
 		</group>
+
+		<!-- 以下为顶层 gpuOnlyBitmaps，游戏在“外观”主菜单中直接调用 AppearanceOptions.gpuOnlyBitmaps-* -->
+		<str id="gpuOnlyBitmaps-name">显存精灵图</str>
+		<str id="gpuOnlyBitmaps-desc">若勾选此项，将仅在图形处理器（GPU）中存储位图，释放大量内存（实验性功能）。关闭此选项会消耗大量内存，尤其是在处理较大精灵图像时。若不确定如何操作，建议保持开启。</str>
 	</group>
 
 	<group name="MobileOptions" prefix="MobileOptions.">
-		<str id="extraButtons-name">Extra Buttons</str>
-		<str id="extraButtons-desc">Select how many extra buttons you prefer to have on hitbox.</str>
+		<str id="extraButtons-name">额外控件</str>
+		<str id="extraButtons-desc">选择你希望在钢琴键上显示的额外按钮数量。</str>
 
-		<str id="hitboxAlpha-name">Hitbox Opacity</str>
-		<str id="hitboxAlpha-desc">Change how opaque the Hitbox should be</str>
+		<str id="extraHints-name">额外提示</str>
+		<str id="extraHints-desc">选择你希望在钢琴键上显示的额外提示数量。</str>
 
-		<str id="controlsAlpha-name">Control Opacity</str>
-		<str id="controlsAlpha-desc">Change how opaque the Mobile Controls should be</str>
+		<str id="hitboxAlpha-name">钢琴键透明度</str>
+		<str id="hitboxAlpha-desc">更改钢琴键的不透明度。</str>
 
-		<str id="hitboxType-name">Hitbox Design</str>
-		<str id="hitboxType-desc">Choose how your Hitbox should look like!</str>
+		<str id="controlsAlpha-name">按键透明度</str>
+		<str id="controlsAlpha-desc">更改移动端控件的不透明度。</str>
 
-		<str id="hitboxMode-name">Hitbox Mode</str>
-		<str id="hitboxMode-desc">Choose your Hitbox Style! (Cannot be added custom ones for now)</str>
+		<str id="oldPadTexture-name">使用旧版触控板纹理</str>
+		<str id="oldPadTexture-desc">若勾选此项，触控板将使用之前的旧纹理。</str>
 
-		<str id="hitboxPos-name">Hitbox Position</str>
-		<str id="hitboxPos-desc">If checked, the Hitbox will be put at the top of the screen, otherwise will stay at the bottom.</str>
+		<str id="touchPadAlpha-name">触控板透明度</str>
+		<str id="touchPadAlpha-desc">更改触控板的不透明度。</str>
 
-		<str id="storageType-name">Folder</str>
-		<str id="storageType-desc">Which folder Codename Engine Mods should stored?\nCan be added custom folders, check android/data for that</str>
+		<str id="hitboxType-name">钢琴键样式</str>
+		<str id="hitboxType-desc">选择你想要的钢琴键外观！</str>
 
-		<str id="storageTypeChange-title">Warning: Storage Type Has Been Changed!</str>
-		<str id="storageTypeChange-body">The Storage Type has been changed.\nA restart is required for this change to take effect.\nAny previously installed mods will have to be moved manually to the new Storage Types's directory after this restart.\n\nPress OK to reset the game and apply the changes.</str>
+		<str id="hitboxMode-name">钢琴键模式</str>
+		<str id="hitboxMode-desc">选择你的钢琴键样式！（目前无法添加自定义样式）</str>
+
+		<str id="hitboxPos-name">钢琴键位置</str>
+		<str id="hitboxPos-desc">若勾选此项，钢琴键将置于屏幕底部，否则将保持在屏幕顶部。</str>
+
+		<str id="screenTimeOut-name">允许屏幕超时</str>
+		<str id="screenTimeOut-desc">若勾选此项，当玩家无操作时手机将进入休眠状态。</str>
+
+		<str id="useExternal-name">使用外部文件夹</str>
+		<str id="useExternal-desc">若勾选此项，引擎将使用 .CodenameEngine 作为模组和附加组件的文件夹。</str>
+
+		<str id="storageType-name">存储文件</str>
+		<str id="storageType-desc">引擎模组应存储在哪个文件夹？\n可以添加自定义文件夹，请查看 android/data 目录。</str>
+
+		<str id="storageTypeChange-title">警告：存储路径已修改</str>
+		<str id="storageTypeChange-body">存储类型已变更。\n需要重启游戏方可生效。\n重启后你需要手动将已安装的模组迁移至新的存储目录中。\n\n点击确定以重启游戏并应用更改</str>
 	</group>
 
 	<group name="GameplayOptions" prefix="GameplayOptions.">
-		<str id="downscroll-name">Downscroll</str>
-		<str id="downscroll-desc">If checked, notes will go from up to down instead of down to up, as if they're falling.</str>
+		<str id="downscroll-name">下落式</str>
+		<str id="downscroll-desc">若勾选此项，音符将从上往下移动，如同下落一般。</str>
 
-		<str id="middlescroll-name">Middlescroll</str>
-		<str id="middlescroll-desc">If checked, player notes stay centered and opponent notes are hidden.</str>
+		<str id="ghostTapping-name">允许空敲</str>
+		<str id="ghostTapping-desc">若未勾选此项，空闲时的空敲将判定为失误。</str>
 
-		<str id="ghostTapping-name">Ghost Tapping</str>
-		<str id="ghostTapping-desc">If unchecked, trying to hit any strum that have no note that can be hit will cause a miss.</str>
+		<str id="naughtyness-name">内容审查</str>
+		<str id="naughtyness-desc">若未勾选此项，将对第七周的过场动画或更多内容进行内容屏蔽。</str>
 
-		<str id="naughtyness-name">Naughtyness</str>
-		<str id="naughtyness-desc">If unchecked, will censor the Week 7 cutscenes or more.</str>
+		<str id="camZoomOnBeat-name">镜头按节拍鼓动</str>
+		<str id="camZoomOnBeat-desc">若未勾选此项，将阻止镜头每4拍进行一次缩放。</str>
 
-		<str id="camZoomOnBeat-name">Camera Zoom on Beat</str>
-		<str id="camZoomOnBeat-desc">If unchecked, will stop the camera from zooming in every 4 beats.</str>
+		<str id="autoPause-name">自动暂停</str>
+		<str id="autoPause-desc">若勾选此项，切换窗口时将暂停游戏。</str>
 
-		<str id="autoPause-name">Auto Pause</str>
-		<str id="autoPause-desc">If checked, switching windows will pause the game.</str>
+		<str id="volumeMusic-name">音乐音量</str>
+		<str id="volumeMusic-desc">仅更改音乐的音量，而非所有声音的音量。</str>
 
-		<str id="volumeMusic-name">Music Volume</str>
-		<str id="volumeMusic-desc">Changes only the volume of the music instead of everything.</str>
+		<str id="volumeSFX-name">音效音量</str>
+		<str id="volumeSFX-desc">仅更改音效的音量，而非所有声音的音量。</str>
 
-		<str id="volumeSFX-name">SFX Volume</str>
-		<str id="volumeSFX-desc">Changes only the volume of the SFX instead of everything.</str>
-
-		<str id="songOffset-name">Song Offset</str>
-		<str id="songOffset-desc">Changes the offset that songs should start with.</str>
+		<str id="songOffset-name">歌曲偏移</str>
+		<str id="songOffset-desc">更改歌曲应使用的起始偏移量。</str>
 
 		<group name="GameplayOptionsAdvanced" prefix="Advanced.">
-			<str id="windowSize-name">Window Size</str>
+			<str id="windowSize-name">窗口大小</str>
 			<str id="windowSize-desc">...</str>
 
-			<str id="streamedMusic-name">Streamed Music</str>
-			<str id="streamedMusic-desc">If checked, only musics will have streamed audio, ALSO freeing a LOT of memory with the downside of higher cpu usage if more audio are being streamed at once (EXPERIMENTAL). Turning this off will consume a lot of memory, especially on longer songs. If you aren't sure, leave this on.</str>
+			<str id="streamedMusic-name">流式音乐</str>
+			<str id="streamedMusic-desc">若勾选此项，仅音乐将采用流式音乐（处理），这同样能释放大量内存，但缺点是若同时流式传输多个音频，会导致CPU占用率升高（实验性功能）。关闭此选项会消耗大量内存，尤其是在播放较长歌曲时。若不确定如何操作，建议保持开启。</str>
 
-			<str id="streamedVocals-name">Streamed Vocals</str>
-			<str id="streamedVocals-desc">If checked, vocals will also be streamed if Streamed Music is checked, will impact the performance if the song uses alot of vocals (EXPERIMENTAL). If you aren't sure, leave this off.</str>
+			<str id="streamedVocals-name">流式人声</str>
+			<str id="streamedVocals-desc">若勾选此项，且“流式音乐”选项已勾选，人声也将采用流式传输，若歌曲包含大量人声，此功能可能会影响性能（实验性功能）。若不确定如何操作，建议保持关闭。</str>
 		</group>
 	</group>
 
 	<group name="LanguageOptions" prefix="LanguageOptions.">
-		<str id="language-name">Language</str>
-		<str id="language-desc">Language by {0} (Version: {1})</str>
+		<str id="language-name">语言</str>
+		<str id="language-desc">当前语言由 {0} （当前语言版本： {1}）</str>
 	</group>
 
 	<group name="MiscOptions" prefix="MiscOptions.">
-		<str id="forceCrash-name">Force Crash</str>
-		<str id="forceCrash-desc">Select this option to force a crash.</str>
+		<str id="forceCrash-name">强制崩溃</str>
+		<str id="forceCrash-desc">选择此选项可强制触发崩溃。</str>
 
-		<str id="betaUpdates-name">Nightly Updates</str>
-		<str id="betaUpdates-desc">If checked, will also include nightly builds (the engine repository's commit updates basically, using Actions' builds) in the update checking.</str>
+		<str id="betaUpdates-name">每日内测更新</str>
+		<str id="betaUpdates-desc">若勾选此项，更新检查中还将包含每日构建版本（本质上是引擎代码仓库的提交更新，使用Actions构建功能生成）。</str>
 
-		<str id="checkForUpdates-name">Check for Updates</str>
-		<str id="checkForUpdates-desc">Select this option to check for new engine updates.</str>
-		<str id="checkForUpdates-noUpdateFound">No update found.</str>
+		<str id="checkForUpdates-name">检查版本更新</str>
+		<str id="checkForUpdates-desc">点击以检查引擎是否有新更新。</str>
+		<str id="checkForUpdates-noUpdateFound">未检查到 新版本。</str>
 
-		<str id="devMode-name">Developer Mode</str>
-		<str id="devMode-desc">If checked, you will be able to access developer features like certain keybinds, editors, developer options, state reloads, console and more.</str>
+		<str id="devMode-name">开发者模式</str>
+		<str id="devMode-desc">若勾选此项，你将能够访问开发者功能，例如特定按键绑定、编辑器、开发者选项、状态重载、控制台等。</str>
 
-		<str id="allowConfigWarning-name">Show Modpacks Warning</str>
-		<str id="allowConfigWarning-desc">If checked, a popup at the start of the game will appear if there are some warnings about the modpack, such as missing configs, incompatible versions and more</str>
+		<str id="allowConfigWarning-name">显示模组包警告</str>
+		<str id="allowConfigWarning-desc">若勾选此项，若模组包存在部分警告（如缺少配置文件、版本不兼容等），游戏启动时将弹出提示窗口。</str>
 
-		<str id="resetSaveData-name">Reset Save Data</str>
-		<str id="resetSaveData-desc">Select this option to reset save data. This will remove all of your highscores.</str>
+		<str id="resetSaveData-name">清除成绩记录</str>
+		<str id="resetSaveData-desc">选择此选项可重置存档数据。此操作将清除你的所有最高分记录。</str>
 	</group>
 
 	<group name="DebugOptions" prefix="DebugOptions.">
-		<str id="title">Debug Options</str>
-		<str id="desc">Use this menu to enable or disable debug options.</str>
+		<str id="title">调试 选项</str>
+		<str id="desc">使用此菜单启用或禁用调试选项。</str>
 
-		<str id="showConsole-name">Show Console</str>
-		<str id="showConsole-desc">Select this to show the debug console, which contains log information about the game.</str>
+		<str id="showConsole-name">显示控制台</str>
+		<str id="showConsole-desc">选中此项可显示调试控制台，该控制台包含游戏的日志信息。</str>
 
-		<str id="editorsResizable-name">Resizable Editors</str>
-		<str id="editorsResizable-desc">If checked, this will allow the editors to render beyond the base 1280x720 resolution of FNF (allowing for more detail and space...)</str>
+		<str id="editorsResizable-name">可调整大小的编辑器</str>
+		<str id="editorsResizable-desc">若勾选此项，这将允许编辑器渲染超出FNF基础的1280x720分辨率（从而获得更多细节和空间…）</str>
 
-		<str id="bypassEditorsResize-name">Bypass Editor Resize</str>
-		<str id="bypassEditorsResize-desc">Disables the minimum resolution for resizing editors (Needs Resizable Editors To Be Enabled).</str>
+		<str id="bypassEditorsResize-name">绕过编辑器窗口缩放</str>
+		<str id="bypassEditorsResize-desc">禁用编辑器调整大小时的最小分辨率限制（需先启用“可调整大小的编辑器（Resizable Editors）功能）。</str>
 
-		<str id="editorSFX-name">Editor SFXs</str>
-		<str id="editorSFX-desc">If checked, will play sound effects when working on editors (ex: will play sfxs when checking checkboxes...)</str>
+		<str id="editorSFX-name">编辑器音效</str>
+		<str id="editorSFX-desc">若勾选此项，在编辑器中操作时会播放音效（例如：勾选复选框时会播放音效…）</str>
 
-		<str id="editorCharterPrettyPrint-name">Chart Pretty Print</str>
-		<str id="editorCharterPrettyPrint-desc">If checked, the saved files from the chart editor will be formatted to be easily viewable</str>
+		<str id="editorCharterPrettyPrint-name">谱面格式化输出</str>
+		<str id="editorCharterPrettyPrint-desc">若勾选此项，从谱面编辑器保存的文件将被格式化为易于查看的形式。</str>
 
-		<str id="editorCharacterPrettyPrint-name">Character Pretty Print</str>
-		<str id="editorCharacterPrettyPrint-desc">If checked, the saved files from the character editor will be formatted to be easily viewable</str>
+		<str id="editorCharacterPrettyPrint-name">人物格式化输出</str>
+		<str id="editorCharacterPrettyPrint-desc">若勾选此项，从人物编辑器保存的文件将被格式化为易于查看的形式。</str>
 
-		<str id="editorStagePrettyPrint-name">Stage Pretty Print</str>
-		<str id="editorStagePrettyPrint-desc">If checked, the saved files from the stage editor will be formatted to be easily viewable</str>
+		<str id="editorStagePrettyPrint-name">背景格式化输出</str>
+		<str id="editorStagePrettyPrint-desc">若勾选此项，从背景编辑器保存的文件将被格式化为易于查看的形式。</str>
 
-		<str id="intensiveBlur-name">Intensive Blur</str>
-		<str id="intensiveBlur-desc">If checked, will use more intensive blur that may be laggier but look better.</str>
+		<str id="intensiveBlur-name">极致模糊</str>
+		<str id="intensiveBlur-desc">若勾选此项，将使用效果更强的模糊处理，这可能会更卡顿，但视觉效果更好。</str>
 
-		<str id="charterAutoSaves-name">Editor Autosaves</str>
-		<str id="charterAutoSaves-desc">If checked, this will autosave your files in the editor, with the settings listed below.</str>
+		<str id="charterAutoSaves-name">编辑器自动保存</str>
+		<str id="charterAutoSaves-desc">若勾选此项，此功能将根据下方列出的设置，在编辑器中自动保存你的文件。</str>
 
-		<str id="charterAutoSaveTime-name">Autosaving Time</str>
-		<str id="charterAutoSaveTime-desc">This controls how often the editor will autosave your file (in seconds...)</str>
+		<str id="charterAutoSaveTime-name">自动保存倒计时</str>
+		<str id="charterAutoSaveTime-desc">此选项控制编辑器自动保存文件的频率（以秒为单位…）</str>
 
-		<str id="charterAutoSaveWarningTime-name">Save Warning Time</str>
-		<str id="charterAutoSaveWarningTime-desc">This controls how long the editor will warn you before it autosaves (in seconds..., 0 to disable)</str>
+		<str id="charterAutoSaveWarningTime-name">自动保存警告倒计时</str>
+		<str id="charterAutoSaveWarningTime-desc">此选项控制编辑器在自动保存前向你发出提醒的时长（以秒为单位…，设为0则禁用提醒）。</str>
 
-		<str id="charterAutoSavesSeparateFolder-name">Autosaves Folder</str>
-		<str id="charterAutoSavesSeparateFolder-desc">If checked, this will autosave your file in a separate folder with a time stamp instead of overriding your current file. (song/autosaves/)</str>
+		<str id="charterAutoSavesSeparateFolder-name">自动保存文件夹</str>
+		<str id="charterAutoSavesSeparateFolder-desc">若勾选此项，此功能会将你的文件自动保存在一个带有时间戳的单独文件夹中，而非覆盖当前文件\n（路径：song/autosaves/）。</str>
 
-		<str id="songOffsetAffectEditors-name">Offset in Charter</str>
-		<str id="songOffsetAffectEditors-desc">If checked, this will enable the Song Offset option in the Chart Editor too.</str>
+		<str id="songOffsetAffectEditors-name">谱编器同偏移</str>
+		<str id="songOffsetAffectEditors-desc">若勾选此项，此功能也将在谱面编辑器中启用“歌曲偏移”选项。</str>
 	</group>
 
 </language>
