@@ -33,7 +33,7 @@ var logo:FlxSprite;
 var menuActive:Bool = false;
 var menuItems:Array = [];
 var selectedIndex:Int = 0;
-var itemLabels:Array<String> = ["Free Pay", "Optiones", "Credits"];
+var itemLabels:Array<String> = ["自由选曲", "设置", "制作组"];
 var menuInputDelay:Float = 0;
 var enterMouseUsed:Bool = false;
 var mobilePadFadeShown:Bool = false;
@@ -182,7 +182,7 @@ function create() {
 
 
     warn = new FlxText(0, 0, 0, "Press enter to play me game", 25); 
-    warn.setFormat(Paths.font("KrabbyPatty.otf"), 25, 0xFFFFFF, "center", FlxTextBorderStyle.NONE);
+    warn.setFormat(Paths.font("HanyiYongZiDingShengGao.ttf"), 25, 0xFFFFFF, "center", FlxTextBorderStyle.NONE);
     warn.screenCenter();
     warn.y += 280;
     add(warn);
@@ -199,7 +199,7 @@ function create() {
     for (i in 0...itemLabels.length) {
         textWidth = 400;
         var item = new FlxText(0, 230 + i * 70, textWidth, itemLabels[i], 85);
-        item.setFormat(Paths.font("KrabbyPatty.otf"), 32, 0xFFFFFF, FlxTextAlign.RIGHT, 0x000000);
+        item.setFormat(Paths.font("HanyiYongZiDingShengGao.ttf"), 32, 0xFFFFFF, FlxTextAlign.RIGHT, 0x000000);
         item.antialiasing = false;
         item.borderSize = 2;
         item.borderColor = 0xFF170E41;
@@ -325,14 +325,14 @@ function createTitleUtilityButtons() {
     cheatPad.alpha = 0.92;
     add(cheatPad);
 
-    cheatStatusText = new FlxText(36, cheatPad.y + cheatPad.height + 6, 190, "CHEAT", 18);
-    cheatStatusText.setFormat(Paths.font("KrabbyPatty.otf"), 18, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+    cheatStatusText = new FlxText(36, cheatPad.y + cheatPad.height + 6, 190, "作弊码", 18);
+    cheatStatusText.setFormat(Paths.font("HanyiYongZiDingShengGao.ttf"), 18, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
     cheatStatusText.borderSize = 2;
     cheatStatusText.camera = gameCam;
     add(cheatStatusText);
 
-    exportSaveText = new FlxText(34, cheatStatusText.y + 66, 194, "EXPORT SAVE", 18);
-    exportSaveText.setFormat(Paths.font("KrabbyPatty.otf"), 18, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+    exportSaveText = new FlxText(34, cheatStatusText.y + 66, 194, "导出保存", 18);
+    exportSaveText.setFormat(Paths.font("HanyiYongZiDingShengGao.ttf"), 18, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
     exportSaveText.borderSize = 2;
     exportSaveText.camera = gameCam;
     add(exportSaveText);
