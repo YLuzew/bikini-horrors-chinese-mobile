@@ -49,6 +49,13 @@ jobs:
             .haxelib\
           restore-keys: |
             cache-build-android
+      - name: Clear stale mobile-controls
+        run: |
+          haxelib remove mobile-controls || true
+          rm -rf .haxelib/mobile-controls || true
+          rm -rf ~/haxelib/mobile-controls || true
+          rm -rf ~/.haxelib/mobile-controls || true
+
       - name: Installing/Updating libraries
         run: |
           haxe -cp commandline -D analyzer-optimize --run Main setup -s
@@ -68,9 +75,24 @@ jobs:
           haxelib set flixel-addons git
           haxelib set flixel-animate git
           haxelib set hxdiscord_rpc git
+      - name: Debug environment
+        run: |
+          echo "=== 环境变量 ==="
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+          echo "ANDROID_NDK_HOME=$ANDROID_NDK_HOME"
+          echo "JAVA_HOME_17_X64=$JAVA_HOME_17_X64"
+          echo "JAVA_HOME=$JAVA_HOME"
+          echo "=== lime 配置 ==="
+          haxelib run lime config || true
+          echo "=== 已安装的库 ==="
+          haxelib list || true
+          echo "=== java 版本 ==="
+          java -version 2>&1 || echo "找不到 java"
+
       - name: Building the game
         run: |
-          haxelib run lime build android -final -D ONLY_ARM64
+          haxelib run lime build android -final -D ONLY_ARM64 -verbose
       - name: Uploading artifact (entire build)
         uses: actions/upload-artifact@v4
         with:
