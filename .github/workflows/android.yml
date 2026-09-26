@@ -8,6 +8,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
+      - name: Generate Keystore
+        run: |
+          keytool -genkeypair -v \
+            -keystore key.keystore \
+            -alias psychport \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass psychengine \
+            -keypass psychengine \
+            -dname "CN=Bikini Horrors, OU=Mobile, O=Ajwwk, L=Unknown, ST=Unknown, C=CN"
+
       - name: Setting up Haxe
         uses: krdlab/setup-haxe@v2
         with:
