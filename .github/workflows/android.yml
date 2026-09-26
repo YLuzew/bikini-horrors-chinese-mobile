@@ -105,7 +105,7 @@ jobs:
           du -sh .haxelib 2>/dev/null || true
           du -sh export 2>/dev/null || true
 
-      - name: Fix AAPT2 and free disk space
+      - name: Reset Gradle cache and free disk space
         run: |
           echo "=== 磁盘空间（清理前）==="
           df -h /
@@ -116,24 +116,44 @@ jobs:
           sudo rm -rf /opt/ghc 2>/dev/null || true
           sudo rm -rf /usr/local/share/boost 2>/dev/null || true
 
+          echo ""
+          echo "=== 系统架构 ==="
+          uname -m
+          uname -a
+
+          echo ""
+          echo "=== Java 环境 ==="
+          echo "JAVA_HOME=$JAVA_HOME"
+          echo "JAVA_HOME_17_X64=$JAVA_HOME_17_X64"
+          which java || true
+          java -version 2>&1 || true
+
+          echo ""
+          echo "=== SDK build-tools 中的 aapt2 ==="
+          for f in $ANDROID_HOME/build-tools/*/aapt2; do
+            if [ -f "$f" ]; then
+              echo "--- $f ---"
+              ls -la "$f"
+              "$f" version 2>&1 | head -2 || echo "→ 这个 aapt2 无法执行"
+            fi
+          done
+
+          echo ""
+          echo "=== 给所有 aapt2 补上执行权限 ==="
+          find $ANDROID_HOME -name "aapt2" -type f -exec chmod +x {} \; 2>/dev/null || true
+          find ~/.gradle -name "aapt2" -type f -exec chmod +x {} \; 2>/dev/null || true
+          echo "完成"
+
+          echo ""
+          echo "=== 彻底清理 Gradle 缓存（含 aapt2、AGP、依赖），强制全新下载 ==="
+          du -sh ~/.gradle 2>/dev/null || true
+          rm -rf ~/.gradle/caches
+          rm -rf ~/.gradle/daemon
+          echo "清理完成"
+
+          echo ""
           echo "=== 磁盘空间（清理后）==="
           df -h /
-
-          echo ""
-          echo "=== 检查缓存中现有的 aapt2 ==="
-          AAPT2=$(find ~/.gradle -name "aapt2" -type f 2>/dev/null | head -1)
-          if [ -n "$AAPT2" ]; then
-            ls -la "$AAPT2" || true
-            "$AAPT2" version 2>&1 | head -3 || echo "→ 这个 aapt2 无法执行"
-          else
-            echo "（缓存中没有已解压的 aapt2）"
-          fi
-
-          echo ""
-          echo "=== 清除缓存中的 aapt2，强制重新获取 ==="
-          find ~/.gradle -name "aapt2-*.jar" -type f -print -delete 2>/dev/null || true
-          find ~/.gradle/caches -type d -name "aapt2*" -exec rm -rf {} + 2>/dev/null || true
-          echo "清除完成"
 
       - name: Building the game
         run: |
@@ -163,9 +183,20 @@ jobs:
           echo "===== 日志末尾 80 行 ====="
           tail -80 /tmp/build.log || true
           echo ""
-          echo "===== aapt2 状态（失败后）====="
-          find ~/.gradle -name "aapt2" -type f 2>/dev/null | head -5 || true
-          find ~/.gradle -name "aapt2" -type f -exec ls -la {} \; 2>/dev/null | head -5 || true
+          echo "===== 失败后的环境状态 ====="
+          echo "--- 磁盘空间 ---"
+          df -h /
+          echo "--- 系统架构 ---"
+          uname -m
+          echo "--- SDK 里的 aapt2 ---"
+          find $ANDROID_HOME -name "aapt2" -type f 2>/dev/null | head -5 || echo "（SDK 里没有 aapt2）"
+          echo "--- Gradle 缓存里的 aapt2 ---"
+          find ~/.gradle -name "aapt2" -type f 2>/dev/null | head -5 || echo "（Gradle 缓存里没有 aapt2）"
+          echo "--- 实际的 gradle.properties ---"
+          cat export/release/android/bin/gradle.properties 2>/dev/null || echo "（没有找到）"
+          echo "--- 构建目录体积 ---"
+          du -sh export 2>/dev/null || true
+          du -sh ~/.gradle 2>/dev/null || true
 
       - name: Uploading artifact (entire build)
         uses: actions/upload-artifact@v4
@@ -173,6 +204,7 @@ jobs:
           name: Codename Engine Android
           path: export/release/android/bin/app/build/outputs/apk/*
       - name: Clear Previous Cache
+        if: always()
         uses: actions/github-script@v6
         with:
           script: |
@@ -192,9 +224,10 @@ jobs:
               }
             }
       - name: Upload New Cache
+        if: always()
         uses: actions/cache@v4
         with:
-          # caching again since for some reason it doesnt work with the first post cache shit
+          # 即使构建失败也保存，这样下次不用从头编译 25 分钟
           key: cache-build-android
           path: |
             ~/.gradle
