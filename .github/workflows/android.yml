@@ -98,10 +98,75 @@ jobs:
           haxelib list || true
           echo "=== java 版本 ==="
           java -version 2>&1 || echo "找不到 java"
+          echo "=== 磁盘空间 ==="
+          df -h /
+          echo "=== 目录体积 ==="
+          du -sh . 2>/dev/null || true
+          du -sh .haxelib 2>/dev/null || true
+          du -sh export 2>/dev/null || true
+
+      - name: Fix AAPT2 and free disk space
+        run: |
+          echo "=== 磁盘空间（清理前）==="
+          df -h /
+
+          echo ""
+          echo "=== 清理预装的大体积软件包，腾出磁盘空间 ==="
+          sudo rm -rf /usr/share/dotnet 2>/dev/null || true
+          sudo rm -rf /opt/ghc 2>/dev/null || true
+          sudo rm -rf /usr/local/share/boost 2>/dev/null || true
+
+          echo "=== 磁盘空间（清理后）==="
+          df -h /
+
+          echo ""
+          echo "=== 检查缓存中现有的 aapt2 ==="
+          AAPT2=$(find ~/.gradle -name "aapt2" -type f 2>/dev/null | head -1)
+          if [ -n "$AAPT2" ]; then
+            ls -la "$AAPT2" || true
+            "$AAPT2" version 2>&1 | head -3 || echo "→ 这个 aapt2 无法执行"
+          else
+            echo "（缓存中没有已解压的 aapt2）"
+          fi
+
+          echo ""
+          echo "=== 清除缓存中的 aapt2，强制重新获取 ==="
+          find ~/.gradle -name "aapt2-*.jar" -type f -print -delete 2>/dev/null || true
+          find ~/.gradle/caches -type d -name "aapt2*" -exec rm -rf {} + 2>/dev/null || true
+          echo "清除完成"
 
       - name: Building the game
         run: |
-          haxelib run lime build android -final -D ONLY_ARM64 -verbose
+          set -o pipefail
+          haxelib run lime build android -final -D ONLY_ARM64 2>&1 | tee /tmp/build.log
+
+      - name: Show build errors
+        if: failure()
+        run: |
+          {
+            echo "## 构建错误摘要"
+            echo ""
+            echo "日志总行数: $(wc -l < /tmp/build.log)"
+            echo ""
+            echo "### 错误行"
+            echo '```'
+            grep -n -i -E "error:|error [A-Z]|BUILD FAILED|What went wrong|FAILURE:|Exception|failed|not found|cannot|No such file" /tmp/build.log | tail -60 || echo "（没有匹配到关键字）"
+            echo '```'
+            echo "### 日志末尾 80 行"
+            echo '```'
+            tail -80 /tmp/build.log || true
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY
+          echo "===== 错误行 ====="
+          grep -n -i -E "error:|error [A-Z]|BUILD FAILED|What went wrong|FAILURE:|Exception|failed|not found|cannot|No such file" /tmp/build.log | tail -60 || true
+          echo ""
+          echo "===== 日志末尾 80 行 ====="
+          tail -80 /tmp/build.log || true
+          echo ""
+          echo "===== aapt2 状态（失败后）====="
+          find ~/.gradle -name "aapt2" -type f 2>/dev/null | head -5 || true
+          find ~/.gradle -name "aapt2" -type f -exec ls -la {} \; 2>/dev/null | head -5 || true
+
       - name: Uploading artifact (entire build)
         uses: actions/upload-artifact@v4
         with:
