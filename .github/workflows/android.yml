@@ -155,6 +155,57 @@ jobs:
           echo "=== 磁盘空间（清理后）==="
           df -h /
 
+      - name: Fix Lime aapt2
+        run: |
+          echo "=== 关键：Lime 模板里的 aapt2 ==="
+          echo "gradle.properties 里的 android.aapt2FromMavenOverride 指向它，"
+          echo "Gradle 用的就是它，而不是 SDK 自带的。"
+          echo ""
+
+          LIME_AAPT2=".haxelib/lime/git/templates/bin/aapt2/linux64/aapt2"
+          echo "路径: $LIME_AAPT2"
+          if [ -f "$LIME_AAPT2" ]; then
+            echo "状态: 文件存在"
+            ls -la "$LIME_AAPT2"
+            echo "版本测试:"
+            "$LIME_AAPT2" version 2>&1 | head -2 || echo "→ 无法执行！"
+          else
+            echo "状态: 文件不存在 —— 这就是 Daemon 启动失败的原因"
+          fi
+
+          echo ""
+          echo "=== 用 SDK 的 aapt2 替换它，确保可用 ==="
+          SDK_AAPT2=$(ls -1 $ANDROID_HOME/build-tools/*/aapt2 2>/dev/null | sort -V | tail -1)
+          echo "选用的 SDK aapt2: $SDK_AAPT2"
+          if [ -n "$SDK_AAPT2" ]; then
+            chmod +x "$SDK_AAPT2" 2>/dev/null || true
+            mkdir -p "$(dirname "$LIME_AAPT2")"
+            cp -f "$SDK_AAPT2" "$LIME_AAPT2"
+            chmod +x "$LIME_AAPT2"
+            echo "替换结果:"
+            ls -la "$LIME_AAPT2"
+            echo "版本测试:"
+            "$LIME_AAPT2" version 2>&1 | head -2 || echo "→ 仍然无法执行"
+          else
+            echo "→ 没找到 SDK 的 aapt2"
+          fi
+
+          echo ""
+          echo "=== 备用方案：若 aapt2 仍不可用，删掉 override 让 Gradle 自己下载 ==="
+          if ! "$LIME_AAPT2" version >/dev/null 2>&1; then
+            echo "→ aapt2 不可用，从模板中删除 override 行"
+            LIME_GP=".haxelib/lime/git/templates/android/template/gradle.properties"
+            if [ -f "$LIME_GP" ]; then
+              sed -i '/aapt2FromMavenOverride/d' "$LIME_GP"
+              echo "已删除。模板中剩余的 aapt2 相关行："
+              grep -n "aapt2" "$LIME_GP" || echo "（无）"
+            else
+              echo "（没找到模板 gradle.properties）"
+            fi
+          else
+            echo "→ aapt2 可正常执行，保留 override"
+          fi
+
       - name: Building the game
         run: |
           set -o pipefail
