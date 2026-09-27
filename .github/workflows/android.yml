@@ -206,6 +206,64 @@ jobs:
             echo "→ aapt2 可正常执行，保留 override"
           fi
 
+      - name: Diagnose and fix C++ runtime mismatch (emutls)
+        run: |
+          echo "=========== 诊断：C++ 运行时不匹配 ==========="
+          echo ""
+          NDK_DIR=$(ls -d $ANDROID_HOME/ndk/* 2>/dev/null | sort -V | tail -1)
+          echo "NDK: $NDK_DIR"
+          READELF="$NDK_DIR/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-readelf"
+          if [ -x "$READELF" ]; then echo "用 llvm-readelf"; else READELF=readelf; fi
+
+          LIME_SO=$(find .haxelib -name "liblime-64.so" 2>/dev/null | head -1)
+          NDK_STL=$(find "$NDK_DIR" -path "*aarch64*" -name "libc++_shared.so" 2>/dev/null | head -1)
+
+          echo ""
+          echo "--- liblime.so: $LIME_SO ---"
+          if [ -n "$LIME_SO" ]; then
+            $READELF -sW "$LIME_SO" 2>/dev/null | grep -i emutls || echo "  （不引用 emutls 符号）"
+          fi
+
+          echo ""
+          echo "--- 项目里所有 libc++_shared ---"
+          find .haxelib -name "libc++_shared*.so" 2>/dev/null | while read -r f; do
+            echo "$f"
+            if $READELF -sW "$f" 2>/dev/null | grep -i emutls >/dev/null; then
+              echo "   → 提供 __emutls_get_address"
+            else
+              echo "   → 不提供 __emutls_get_address"
+            fi
+          done
+
+          echo ""
+          echo "--- NDK 自带的 libc++_shared.so ---"
+          if [ -n "$NDK_STL" ]; then
+            echo "$NDK_STL"
+            if $READELF -sW "$NDK_STL" 2>/dev/null | grep -i emutls >/dev/null; then
+              echo "   → 提供 __emutls_get_address"
+            else
+              echo "   → 不提供 __emutls_get_address"
+            fi
+          else
+            echo "  （没找到）"
+          fi
+
+          echo ""
+          echo "=========== 修复：用当前 NDK 重新编译 liblime.so ==========="
+          if [ -d ".haxelib/lime/git" ]; then
+            cd .haxelib/lime/git
+            haxelib run lime rebuild . android -64 -release 2>&1 | tail -30 || echo "→ 重建失败，继续用原 ndll"
+            echo ""
+            if [ -f ndll/Android/liblime-64.so ]; then
+              echo "重建后的 liblime-64.so:"
+              ls -la ndll/Android/liblime-64.so
+              echo "是否仍依赖 emutls："
+              $READELF -sW ndll/Android/liblime-64.so 2>/dev/null | grep -i emutls || echo "  → 已不再依赖（修复成功）"
+            fi
+          else
+            echo "→ 找不到 lime 库目录"
+          fi
+
       - name: Building the game
         run: |
           set -o pipefail
